@@ -68,7 +68,7 @@ React 16.8 brought us [Hooks](https://reactjs.org/docs/hooks-intro.html), which 
        [:button {:onClick #(-> v inc set-v)} "Click to Increment"]]))
 
 (react-dom/render 
-    (r/as-element [counter {:init 0}]) 
+    (as-element [counter {:init 0}]) 
     (.-body js/document))
 ```
 
