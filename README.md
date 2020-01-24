@@ -1,22 +1,24 @@
 # rct
 
+[![Clojars Project](https://img.shields.io/clojars/v/rct.svg)](https://clojars.org/rct)
+
 A library that helps you write modern React components in Clojurescript however you like. 
 
 As the layer between ClojureScript and React, `rct` aims to be minimal and powerful - it should introduce as little abstraction as possible to smooth the boundary and give the user as much control as possible to leverage that abstraction.
 
 ## API
 
-The `rct` API consists of two open protocols, each with a single method:
+The `rct.core` API consists of two protocols, each with a single method:
 - `ReactComponent`
     - `as-component`
 - `ReactElement`
     - `as-element`
 
-You can call the methods to conform data to a native React Component and React Element. You do this when _providing_ data to native code (for example, when rendering your root element to the DOM). 
+You can *call the methods* to conform data to a native React Component and React Element. You do this when _providing_ components or elements to native code (for example, when rendering your root element to the DOM). 
 
-You can extend the protocols to use new data types as React Components, like CLJS maps for class-based components, and React Elements, like CLJS vectors for Hiccup-style templates (included!).
+You can *extend the protocols* to use new data types as React Components, like CLJS maps for class-based components, and React Elements, like CLJS vectors for Hiccup-style templates (included!).
 
-Note that you don't have to "adapt" native Components to use them - these ReactComponent implementations are already provided in the library.
+Note that you don't have to "adapt" native Components to use them - these ReactComponent implementations are already provided in the library. 
 
 ## Rationale
 

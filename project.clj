@@ -1,14 +1,14 @@
-(defproject rct/rct "0.0.1"
-  :description "Does cool stuff"
-  :url "https://the.inter.net/wherever"
+(defproject anrosent/rct "0.0.1"
+  :description "Write modern React components in Clojurescript however you like."
+  :url "https://github.com/anrosent/rct"
 
   ;; this is optional, add what you want or remove it
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "The MIT License"
+            :url "http://opensource.org/licenses/MIT"}
 
   :dependencies
   ;; always use "provided" for Clojure(Script)
   [[org.clojure/clojurescript "1.10.520" :scope "provided"]]
 
    :source-paths
-   ["src/main"])
+   ["src"])
