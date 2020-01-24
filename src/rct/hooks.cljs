@@ -1,6 +1,6 @@
 (ns rct.hooks
   (:require
-    ["react" as React]))
+    ["react" :as React]))
 
 ; *******
 ; Standard React Hooks

@@ -2,12 +2,11 @@
   (:require
     ["react" :as React]))
 
-;; ***********************************
-;; Boundary Protocols
-;; ***********************************
+;; Open protocol for representing React Elements as data! 
 (defprotocol ReactElement
   (as-element [this]))
 
+;; Open protocol for implementing React Components! 
 (defprotocol ReactComponent
   (as-component [this]))
 
@@ -49,6 +48,7 @@
 ;; ***********************************
 
 ;; Convert all props except `children` to clj data
+;; (children are eagerly rendered into ReactElements, so don't mess with them)
 (defn- props->clj
   [props]
   (let [children (.-children props)]
@@ -69,19 +69,19 @@
        (apply createElement t (clj->js props) (clj->js children))))))
 
 ;; ***********************************
-;; Hiccup Template Extension
+;; Hiccup Template Extension (since it is so common and useful)
 ;; ***********************************
 
-;; NOTE: Extend this multimethod to add new parsers for Hiccup-style vector templates
-(defmulti parse-hiccup (fn [[tag props & children]] tag))
+;; Extension point for parsing vector templates!
+(defmulti render-hiccup (fn [[tag props & children]] tag))
 
-;; Extend protocol to dispatch to Hiccup template parser
+;; Extend protocol to dispatch to Hiccup template renderer
 (extend-protocol ReactElement
   cljs.core/PersistentVector
   (as-element [hiccup-template]
-    (parse-hiccup hiccup-template)))
+    (render-hiccup hiccup-template)))
 
-(defmethod parse-hiccup :default
+(defmethod render-hiccup :default
   [[tag props & children :as args]]
   (cond 
 
@@ -89,10 +89,10 @@
     ;; e.g. When dynamically rendering a collection of children
     (vector? tag) (vec (map as-element args))
 
-    ;; Usually we'll be parsing [tag props ...children]
+    ;; Usually we'll be rendering [tag props ...children]
     :else (create-element (as-component tag) props (map as-element (filter some? children)))))
 
-;; Parses a React Fragment (no props, only children)
-(defmethod parse-hiccup :<>
+;; Renders a React Fragment (no props, only children)
+(defmethod render-hiccup :<>
   [[tag & children]]
-  (parse-hiccup (vec (list* (.-Fragment React) {} children))))
+  (render-hiccup (vec (list* (.-Fragment React) {} children))))
