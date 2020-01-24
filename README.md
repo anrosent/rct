@@ -26,7 +26,7 @@ There are a handful of existing libraries for writing React components in Clojur
 
 ## Stateful Components
 
-React 16.8 brought us [Hooks](https://reactjs.org/docs/hooks-intro.html), which let you access the all the rich state and lifecycle APIs from functional components. This greatly improves the ergonomics for developers looking to build stateful React apps in idiomatic Clojure. `rct` provides wrappers to some of these in `rct.hooks`. 
+React 16.8 brought us [Hooks](https://reactjs.org/docs/hooks-intro.html), which let you access the all the rich state and lifecycle APIs from functional components. This greatly improves the ergonomics for developers looking to build stateful React apps in idiomatic ClojureScript. `rct` provides wrappers to some of these in `rct.hooks`. 
 
 ## Examples
 
@@ -74,7 +74,9 @@ React 16.8 brought us [Hooks](https://reactjs.org/docs/hooks-intro.html), which 
 
 #### Feedback?
 
-Feel free to email, find me on Clojurians (@anson), or post an issue :) I think this could probably reach a very useful stable state with some more polish on the Hooks wrappers and a `ReactComponent` impl that lets you write class-based components as CLJS maps.
+Feel free to send me questions and comments via email (see Github profile), DM on Clojurians (@anson), or post an issue :) 
+
+I think this could probably reach a very useful stable state with some more polish on the Hooks wrappers (`hx` has a lot of this) and a `ReactComponent` impl that lets you write class-based components as CLJS maps (I haven't needed this, but I'm sure some people do). 
 
 ## License
 
