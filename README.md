@@ -20,7 +20,7 @@ Note that you don't have to "adapt" native Components to use them - these ReactC
 
 ## Rationale
 
-There are a handful of existing libraries for writing React components in Clojurescript, like [Reagent](https://github.com/reagent-project/reagent), [Rum](https://github.com/tonsky/rum), and [Om](https://github.com/omcljs/om). All of these provide features for defining React components using DSLs and managing reactive state. The closest relative of this library is probably [hx](https://github.com/Lokeh/hx) - both `hx` and `rct` try to give the user the best tool for writing modern React components, and explicitly leave state management out of scope. The main differentiating factor for `rct` is that the API is smaller and more extensible. 
+There are a handful of existing libraries for writing React components in Clojurescript, like [Reagent](https://github.com/reagent-project/reagent), [Rum](https://github.com/tonsky/rum), and [Om](https://github.com/omcljs/om). All of these provide features for defining React components using DSLs and managing reactive state. The closest relative of this library is probably [hx](https://github.com/Lokeh/hx) - both `hx` and `rct` try to give the user the best tool for writing modern React components, and explicitly leave state management out of scope. The main differentiating factor for `rct` is that the API is smaller and more extensible, and thus more likely to compose well with the other tools you're working with. 
 
 ## Stateful Components
 
