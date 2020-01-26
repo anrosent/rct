@@ -72,6 +72,24 @@ React 16.8 brought us [Hooks](https://reactjs.org/docs/hooks-intro.html), which 
     (.-body js/document))
 ```
 
+### JS Component Interop (nothing special!)
+```clojure
+(ns rct.example.interop
+    (:require ["react-dom" :as react-dom]
+              ["special-js-input-lib" :refer [SpecialJsInputComponent]]
+              [rct.core :refer [as-element]]))
+
+(defn user-input [{:keys [onSubmit]}]
+  (let [[v set-v] (use-state init)]
+      [:<>
+       [SpecialJsInputComponent {:value v :onChange set-v}]
+       [:button {:onClick #(onSubmit v)} "Submit"]]))
+
+(react-dom/render 
+    (as-element [user-input {:onSubmit js/alert}])
+    (.-body js/document))
+```
+
 #### Feedback?
 
 Feel free to send me questions and comments via email (see Github profile), DM on Clojurians (@anson), or post an issue :) 
